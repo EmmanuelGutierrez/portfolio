@@ -1,0 +1,64 @@
+---
+import { ThemeToggle } from "./ThemeToggle";
+import Download from "../../assets/svg/download.svg";
+---
+
+<header class="bg-header-bg py-2 text-header-text">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex-1 md:flex md:items-center md:gap-12">
+        <a class="text-xl font-bold" href="/">
+          Emmanuel<br /> Gutierrez
+        </a>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12">
+        <nav aria-label="Global" class="hidden md:block">
+          <ul class="flex items-center gap-6 text-sm">
+            <li>
+              <a class="transition hover:text-header-text/75" href="#">
+                Sobre mi
+              </a>
+            </li>
+
+            <li>
+              <a class="transition hover:text-header-text/75" href="#">
+                Proyectos
+              </a>
+            </li>
+
+            <li>
+              <a class="transition hover:text-header-text/75" href="#">
+                Skills
+              </a>
+            </li>
+
+            <li>
+              <a class="transition hover:text-header-text/75" href="#">
+                Contacto
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <div class="sm:flex sm:gap-4">
+            <a
+              class="rounded-md transform transition 
+              bg-neon-blue hover:bg-neon-blue/75 px-5 py-2.5
+              flex items-center gap-2 text-sm font-medium text-white shadow-sm"
+              href="#"
+            >
+              Mi CV
+              <Download class="w-4 h-4" />
+            </a>
+
+            <div class="hidden sm:flex">
+              <ThemeToggle client:only="react" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

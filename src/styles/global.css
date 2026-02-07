@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --width-100: 25rem;
+  --width-110: 27.5rem;
+  --width-120: 30rem;
+  --width-130: 32.5rem;
+  --width-140: 35rem;
+  --width-150: 37.5rem;
+  --width-160: 40rem;
+  --width-170: 42.5rem;
+  --width-180: 45rem;
+  --width-190: 47.5rem;
+  --width-200: 50rem;
+  --width-210: 52.5rem;
+  --width-220: 55rem;
+  --width-230: 57.5rem;
+  --width-240: 60rem;
+  --width-250: 62.5rem;
+  --width-260: 65rem;
+  --width-270: 67.5rem;
+  --width-280: 70rem;
+  --width-290: 72.5rem;
+  --width-300: 75rem;
+  --width-310: 77.5rem;
+  --width-320: 80rem;
+  --width-330: 82.5rem;
+  --width-340: 85rem;
+  --width-350: 87.5rem;
+  --width-360: 90rem;
+  --width-370: 92.5rem;
+  --width-380: 95rem;
+
+  --container-100: 25rem;
+  --container-110: 27.5rem;
+  --container-120: 30rem;
+  --container-130: 32.5rem;
+  --container-140: 35rem;
+  --container-150: 37.5rem;
+  --container-160: 40rem;
+  --container-170: 42.5rem;
+  --container-180: 45rem;
+  --container-190: 47.5rem;
+  --container-200: 50rem;
+  --container-210: 52.5rem;
+  --container-220: 55rem;
+  --container-230: 57.5rem;
+  --container-240: 60rem;
+  --container-250: 62.5rem;
+  --container-260: 65rem;
+  --container-270: 67.5rem;
+  --container-280: 70rem;
+  --container-290: 72.5rem;
+  --container-300: 75rem;
+  --container-310: 77.5rem;
+  --container-320: 80rem;
+  --container-330: 82.5rem;
+  --container-340: 85rem;
+  --container-350: 87.5rem;
+  --container-360: 90rem;
+  --container-370: 92.5rem;
+  --container-380: 95rem;
+
+  --height-100: 25rem;
+  --height-110: 27.5rem;
+  --height-120: 30rem;
+  --height-130: 32.5rem;
+  --height-140: 35rem;
+  --height-150: 37.5rem;
+  --height-160: 40rem;
+  --height-170: 42.5rem;
+  --height-180: 45rem;
+  --height-190: 47.5rem;
+  --height-200: 50rem;
+  --height-210: 52.5rem;
+  --height-220: 55rem;
+  --height-230: 57.5rem;
+  --height-240: 60rem;
+  --height-250: 62.5rem;
+  --height-260: 65rem;
+  --height-270: 67.5rem;
+  --height-280: 70rem;
+  --height-290: 72.5rem;
+  --height-300: 75rem;
+  --height-310: 77.5rem;
+  --height-320: 80rem;
+  --height-330: 82.5rem;
+  --height-340: 85rem;
+  --height-350: 87.5rem;
+  --height-360: 90rem;
+  --height-370: 92.5rem;
+  --height-380: 95rem;
+
+  --color-space-black: var(--space-black);
+  --color-deep-dark-blue: var(--deep-dark-blue);
+  --color-neon-blue: var(--neon-blue);
+  --color-pure-white: var(--pure-white);
+  --color-vapor-gray: var(--vapor-gray);
+  --color-border-blue: var(--border-blue);
+  --color-snow-white: var(--snow-white);
+  --color-outline-gray: var(--outline-gray);
+  --color-electric-blue: var(--electric-blue);
+  --color-deep-navy: var(--deep-navy);
+  --color-text-gray: var(--text-gray);
+  --color-brand: var(--color-neon-blue);
+  --color-bg-page: var(--bg-page);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-header-bg: var(--header-bg);
+  --color-header-text: var(--header-text);
+  --color-theme-toggle-bg: var(--theme-toggle-bg);
+}
+
+@layer base {
+  :root {
+    --bg-page: var(--color-pure-white);
+    --bg-card: var(--color-pure-white);
+    --text-main: var(--color-deep-navy);
+    --text-muted: var(--color-text-gray);
+    --border-subtle: var(--color-outline-gray);
+    --header-bg: var(--color-deep-navy);
+    --header-text: var(--color-pure-white);
+    --theme-toggle-bg: var(--color-deep-dark-blue);
+
+    --space-black: #050a18;
+    --deep-dark-blue: #0d1526;
+    --neon-blue: #1d8cf8;
+    --pure-white: #ffffff;
+    --vapor-gray: #9ca3af;
+    --border-blue: #1e293b;
+    --snow-white: #ffffff;
+    --outline-gray: #f3f4f6;
+    --electric-blue: #1d8cf8;
+    --deep-navy: #0b132b;
+    --text-gray: #4b5563;
+  }
+
+  .dark {
+    --bg-page: var(--color-space-black);
+    --bg-card: var(--color-deep-dark-blue);
+    --text-main: var(--color-pure-white);
+    --text-muted: var(--color-vapor-gray);
+    --border-subtle: var(--color-border-blue);
+
+    --header-bg: var(--color-deep-dark-blue);
+    --header-text: var(--color-pure-white);
+    --theme-toggle-bg: var(--color-pure-white);
+  }
+
+  body {
+    @apply bg-bg-page text-text-main transition-colors duration-300;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .prose {
+    @apply max-w-none;
+    --tw-prose-headings: var(--text-main);
+    --tw-prose-body: var(--text-muted);
+    --tw-prose-links: var(--color-brand);
+    --tw-prose-bold: var(--text-main);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
+  border-radius: 10px;
+}
