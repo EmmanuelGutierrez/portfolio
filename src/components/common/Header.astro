@@ -1,9 +1,10 @@
 ---
 import { ThemeToggle } from "./ThemeToggle";
 import Download from "../../assets/svg/download.svg";
+import Link from "./Link.astro";
 ---
 
-<header class="bg-header-bg py-2 text-header-text">
+<header class="bg-header-bg py-2 text-header-text border-b border-snow-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex-1 md:flex md:items-center md:gap-12">
@@ -33,25 +34,18 @@ import Download from "../../assets/svg/download.svg";
               </a>
             </li>
 
-            <li>
-              <a class="transition hover:text-header-text/75" href="#">
-                Contacto
-              </a>
-            </li>
+          
           </ul>
         </nav>
 
         <div class="flex items-center gap-4">
           <div class="sm:flex sm:gap-4">
-            <a
-              class="rounded-md transform transition 
-              bg-neon-blue hover:bg-neon-blue/75 px-5 py-2.5
-              flex items-center gap-2 text-sm font-medium text-white shadow-sm"
+            <Link
               href="#"
             >
-              Mi CV
+              Mi CVs
               <Download class="w-4 h-4" />
-            </a>
+            </Link>
 
             <div class="hidden sm:flex">
               <ThemeToggle client:only="react" />
