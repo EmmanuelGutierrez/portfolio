@@ -2,6 +2,7 @@
 import { ThemeToggle } from "./ThemeToggle";
 import Download from "../../assets/svg/download.svg";
 import Link from "./Link.astro";
+import DownloadButton from "./DownloadButton.astro";
 ---
 
 <header class="bg-header-bg py-2 text-header-text border-b border-snow-white/5 sticky top-0 z-50">
@@ -40,12 +41,7 @@ import Link from "./Link.astro";
 
         <div class="flex items-center gap-4">
           <div class="sm:flex sm:gap-4">
-            <Link
-              href="#"
-            >
-              Mi CVs
-              <Download class="w-4 h-4" />
-            </Link>
+            <DownloadButton />
 
             <div class="hidden sm:flex">
               <ThemeToggle client:only="react" />

@@ -1,0 +1,78 @@
+---
+import Button from "./Button.astro";
+import Card from "./Card.astro";
+import Modal from "./Modal.astro";
+import Download from "../../assets/svg/download.svg";
+import Pdf from "../../assets/svg/pdf.svg";
+---
+
+<Modal id="download-cvs-modal" triggerClass="contents">
+  <Button
+    slot="trigger"
+    class="group relative transition-all hover:shadow-lg hover:border-brand cursor-pointer"
+  >
+    Mi CVs
+    <Download class="w-4 h-4" />
+  </Button>
+
+  <div class="flex flex-col items-center justify-center p-6 sm:p-8">
+    <h2 class="text-2xl font-bold text-text-main mb-2">Selecciona un idioma</h2>
+    <p class="text-text-muted mb-8 text-center text-sm">
+      Elige la versión de mi CV que deseas descargar
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+      <a
+        href="/CV%20EMMANUEL%20GUTIERREZ-english.pdf"
+        download="CV EMMANUEL GUTIERREZ-english.pdf"
+        class="group w-full block decoration-transparent"
+      >
+        <Card
+          class="flex flex-col items-center justify-center gap-4 p-6 h-full border hover:border-brand transition-all hover:shadow-lg hover:-translate-y-1 bg-bg-card"
+        >
+          <div
+            class="flex items-center justify-center h-12 w-12 bg-red-400 rounded-2xl"
+          >
+            <Pdf class="w-6 h-6" />
+          </div>
+          <div class="flex flex-col items-center">
+            <span
+              class="font-bold text-lg text-text-main group-hover:text-brand transition-colors"
+              >English</span
+            >
+            <span
+              class="text-xs text-text-muted mt-1 uppercase tracking-wider font-medium"
+              >Download</span
+            >
+          </div>
+        </Card>
+      </a>
+
+      <a
+        href="/CV%20EMMANUEL%20GUTIERREZ-spanish.pdf"
+        download="CV EMMANUEL GUTIERREZ-spanish.pdf"
+        class="group w-full block decoration-transparent"
+      >
+        <Card
+          class="flex flex-col items-center justify-center gap-4 p-6 h-full border hover:border-brand transition-all hover:shadow-lg hover:-translate-y-1 bg-bg-card"
+        >
+          <div
+            class="flex items-center justify-center h-12 w-12 bg-blue-400 rounded-2xl"
+          >
+            <Pdf class="w-6 h-6" />
+          </div>
+          <div class="flex flex-col items-center">
+            <span
+              class="font-bold text-lg text-text-main group-hover:text-brand transition-colors"
+              >Español</span
+            >
+            <span
+              class="text-xs text-text-muted mt-1 uppercase tracking-wider font-medium"
+              >Descargar</span
+            >
+          </div>
+        </Card>
+      </a>
+    </div>
+  </div>
+</Modal>

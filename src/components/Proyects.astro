@@ -4,6 +4,35 @@ import ProyectCard from "./ProyectCard.astro";
 
 const proyects = [
   {
+    title: "Red Social Fullstack",
+    slug: "red-social-graphql-nestjs",
+    description:
+      "Plataforma escalable de microblogging con arquitectura basada en grafos. Implementé sistemas complejos de threads (ancestros y respuestas), persistencia de estados de moderación y sincronización en tiempo real mediante suscripciones. Foco crítico en la seguridad mediante rotación de tokens y optimización de datos con paginación por cursor.",
+    technologies: [
+      "Next.js",
+      "NestJS",
+      "GraphQL",
+      "Apollo Client",
+      "MongoDB",
+      "JWT",
+      "PM2",
+      "AWS EC2",
+      "Zustand",
+      "Tailwind CSS",
+    ],
+    features: [
+      "Autenticación robusta con rotación de Refresh Tokens en cookies HttpOnly.",
+      "Paginación por cursor para scroll infinito eficiente.",
+      "Manejo avanzado de caché en Apollo Client para optimizar el ancho de banda.",
+      "Notificaciones en tiempo real mediante WebSockets (GraphQL Subscriptions).",
+      "Despliegue gestionado con PM2 en instancia EC2 de AWS.",
+    ],
+    links: {
+      frontend: "https://github.com/EmmanuelGutierrez/social-app",
+      backend: "https://github.com/EmmanuelGutierrez/social-api",
+    },
+  },
+  {
     title: "Dorian Ediciones",
     slug: "dorian-ediciones-astro",
     description:
@@ -52,35 +81,7 @@ const proyects = [
       backend: "https://github.com/EmmanuelGutierrez/movie-system-nest",
     },
   },
-  {
-    title: "Red Social Fullstack",
-    slug: "red-social-graphql-nestjs",
-    description:
-      "Plataforma escalable de microblogging con arquitectura basada en grafos. Implementé sistemas complejos de threads (ancestros y respuestas), persistencia de estados de moderación y sincronización en tiempo real mediante suscripciones. Foco crítico en la seguridad mediante rotación de tokens y optimización de datos con paginación por cursor.",
-    technologies: [
-      "Next.js",
-      "NestJS",
-      "GraphQL",
-      "Apollo Client",
-      "MongoDB",
-      "JWT",
-      "PM2",
-      "AWS EC2",
-      "Zustand",
-      "Tailwind CSS",
-    ],
-    features: [
-      "Autenticación robusta con rotación de Refresh Tokens en cookies HttpOnly.",
-      "Paginación por cursor para scroll infinito eficiente.",
-      "Manejo avanzado de caché en Apollo Client para optimizar el ancho de banda.",
-      "Notificaciones en tiempo real mediante WebSockets (GraphQL Subscriptions).",
-      "Despliegue gestionado con PM2 en instancia EC2 de AWS.",
-    ],
-    links: {
-      frontend: "https://github.com/EmmanuelGutierrez/social-app",
-      backend: "https://github.com/EmmanuelGutierrez/social-api",
-    },
-  },
+
   {
     title: "Mi portfolio",
     slug: "portfolio-astro-v4",
