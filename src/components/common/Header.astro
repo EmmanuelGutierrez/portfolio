@@ -3,6 +3,9 @@ import { ThemeToggle } from "./ThemeToggle";
 import Download from "../../assets/svg/download.svg";
 import Link from "./Link.astro";
 import DownloadButton from "./DownloadButton.astro";
+import MenuIcon from "../../assets/svg/menu.svg";
+import CloseIcon from "../../assets/svg/close.svg";
+import NavLinks from "./NavLinks.astro";
 ---
 
 <header class="bg-header-bg py-2 text-header-text border-b border-snow-white/5 sticky top-0 z-50">
@@ -16,39 +19,99 @@ import DownloadButton from "./DownloadButton.astro";
 
       <div class="md:flex md:items-center md:gap-12">
         <nav aria-label="Global" class="hidden md:block">
-          <ul class="flex items-center gap-6 text-sm">
-            <li>
-              <a class="transition hover:text-header-text/75" href="#">
-                Sobre mi
-              </a>
-            </li>
-
-            <li>
-              <a class="transition hover:text-header-text/75" href="#">
-                Proyectos
-              </a>
-            </li>
-
-            <li>
-              <a class="transition hover:text-header-text/75" href="#">
-                Skills
-              </a>
-            </li>
-
-          
-          </ul>
+          <NavLinks 
+            class="flex items-center gap-6 text-sm" 
+            linkClass="transition hover:text-header-text/75" 
+          />
         </nav>
 
         <div class="flex items-center gap-4">
-          <div class="sm:flex sm:gap-4">
-            <DownloadButton />
-
-            <div class="hidden sm:flex">
-              <ThemeToggle client:only="react" />
+          <div class="hidden sm:flex sm:gap-4">
+            <div class="flex items-center gap-4">
+               <DownloadButton id="download-cvs-desktop" />
+               <ThemeToggle client:only="react" />
             </div>
+          </div>
+
+          <div class="block md:hidden">
+            <button
+              id="menu-toggle"
+              class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white"
+            >
+              <div id="icon-menu" class="block">
+                 <MenuIcon class="size-5" />
+              </div>
+              <div id="icon-close" class="hidden">
+                 <CloseIcon class="size-5" />
+              </div>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-x-0 top-[73px] bottom-0 z-40 bg-header-bg border-t border-snow-white/5 translate-x-full transition-transform duration-300 md:hidden overflow-y-auto"
+  >
+    <nav class="flex flex-col p-4 gap-4">
+      <NavLinks 
+        class="flex flex-col gap-4 text-lg" 
+        linkClass="block py-2 px-4 hover:bg-white/5 rounded-lg transition-colors"
+      />
+
+      <div class="border-t border-snow-white/5 pt-4 flex flex-col gap-4">
+         <div class="px-4">
+            <DownloadButton id="download-cvs-mobile" />
+         </div>
+         <div class="px-4 flex items-center gap-2">
+            <span class="text-sm">Tema:</span>
+            <ThemeToggle client:only="react" />
+         </div>
+      </div>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconClose = document.getElementById("icon-close");
+  const menuLinks = mobileMenu?.querySelectorAll("a");
+
+  if (menuToggle && mobileMenu && iconMenu && iconClose) {
+    const toggleMenu = () => {
+      const isClosed = mobileMenu.classList.contains("translate-x-full");
+      
+      if (isClosed) {
+        mobileMenu.classList.remove("translate-x-full");
+        iconMenu.classList.add("hidden");
+        iconMenu.classList.remove("block");
+        iconClose.classList.add("block");
+        iconClose.classList.remove("hidden");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      } else {
+        mobileMenu.classList.add("translate-x-full");
+        iconMenu.classList.add("block");
+        iconMenu.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+        iconClose.classList.remove("block");
+        document.body.style.overflow = ""; // Enable scrolling
+      }
+    };
+
+    menuToggle.addEventListener("click", toggleMenu);
+
+    // Close menu when clicking a link
+    menuLinks?.forEach(link => {
+      link.addEventListener("click", () => {
+        if (!mobileMenu.classList.contains("translate-x-full")) {
+          toggleMenu();
+        }
+      });
+    });
+  }
+</script>

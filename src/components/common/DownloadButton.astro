@@ -4,9 +4,15 @@ import Card from "./Card.astro";
 import Modal from "./Modal.astro";
 import Download from "../../assets/svg/download.svg";
 import Pdf from "../../assets/svg/pdf.svg";
+
+interface Props {
+  id?: string;
+}
+
+const { id = "download-cvs-modal" } = Astro.props;
 ---
 
-<Modal id="download-cvs-modal" triggerClass="contents">
+<Modal id={id} triggerClass="contents">
   <Button
     slot="trigger"
     class="group relative transition-all hover:shadow-lg hover:border-brand cursor-pointer"

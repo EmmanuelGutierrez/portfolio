@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string;
+  itemClass?: string;
+  linkClass?: string;
+}
+
+const { class: className, itemClass, linkClass } = Astro.props;
+
+const links = [
+  { href: "#professional-summary", label: "Sobre mi" },
+  { href: "#experience", label: "Experiencia" },
+  { href: "#proyects", label: "Proyectos" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contacto" },
+];
+---
+
+<ul class={className}>
+  {
+    links.map(({ href, label }) => (
+      <li class={itemClass}>
+        <a class={linkClass} href={href}>
+          {label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
