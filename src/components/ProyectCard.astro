@@ -20,7 +20,6 @@ interface Props {
 const { slug, title, description, technologies, features, image, status, links } =
   Astro.props;
 const modalId = `modal-${slug}`;
-console.log("links", links);
 ---
 
 <Modal id={modalId} triggerClass="contents">

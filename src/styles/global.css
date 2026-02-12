@@ -165,6 +165,10 @@
     --tw-prose-links: var(--color-brand);
     --tw-prose-bold: var(--text-main);
   }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
 }
 
 ::-webkit-scrollbar {
