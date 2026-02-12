@@ -1,0 +1,129 @@
+---
+import SectionTitle from "./common/SectionTitle.astro";
+import ProyectCard from "./ProyectCard.astro";
+
+const proyects = [
+  {
+    title: "Dorian Ediciones",
+    slug: "dorian-ediciones-astro",
+    description:
+      "Sitio web corporativo y catálogo para una editorial independiente. Desarrollado con un enfoque 'Content-First', priorizando la velocidad de carga y el SEO técnico. Este proyecto sirvió como transición hacia arquitecturas de islas (Islands Architecture), logrando una puntuación de performance óptima.",
+    technologies: [
+      "Astro",
+      "Tailwind CSS",
+      "JavaScript ES6",
+      "HTML5 Semantic",
+      "CSS Grid/Flexbox",
+    ],
+    features: [
+      "Arquitectura de Islas para minimizar el envío de JavaScript al cliente.",
+      "Optimización automatizada de imágenes mediante el componente Image de Astro.",
+      "Diseño totalmente responsive y minimalista adaptado a la identidad de marca de la editorial.",
+      "Estructura de datos optimizada para indexación en motores de búsqueda (SEO).",
+      "Navegación instantánea mediante el uso de View Transitions nativas.",
+    ],
+    focus: "Performance & Content Strategy",
+  },
+  {
+    title: "CineConnect: Real-Time Booking Engine",
+    slug: "reserva-cine-socketio-mercadopago",
+    description:
+      "Sistema de reserva de entradas con sincronización bidireccional en tiempo real. El núcleo del proyecto es un motor de estado que gestiona la disponibilidad de butacas mediante WebSockets, evitando colisiones de compra. Integra un flujo de checkout completo con pasarela de pagos profesional.",
+    technologies: [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "TypeORM",
+      "Socket.io",
+      "Mercado Pago",
+      "Tailwind CSS",
+      "TypeScript",
+    ],
+    features: [
+      "Sincronización de butacas en tiempo real con Socket.io para prevenir reservas duplicadas.",
+      "Integración de API de Mercado Pago para el procesamiento seguro de pagos.",
+      "Modelado de datos relacionales con TypeORM y PostgreSQL para gestión de funciones y salas.",
+      "Arquitectura API REST modular siguiendo los principios de NestJS.",
+      "Diseño de interfaz interactiva para la selección dinámica de asientos.",
+    ],
+    status: "MVP / Proof of Concept",
+    links: {
+      frontend: "https://github.com/EmmanuelGutierrez/movie-system-app",
+      backend: "https://github.com/EmmanuelGutierrez/movie-system-nest",
+    },
+  },
+  {
+    title: "Red Social Fullstack",
+    slug: "red-social-graphql-nestjs",
+    description:
+      "Plataforma escalable de microblogging con arquitectura basada en grafos. Implementé sistemas complejos de threads (ancestros y respuestas), persistencia de estados de moderación y sincronización en tiempo real mediante suscripciones. Foco crítico en la seguridad mediante rotación de tokens y optimización de datos con paginación por cursor.",
+    technologies: [
+      "Next.js",
+      "NestJS",
+      "GraphQL",
+      "Apollo Client",
+      "MongoDB",
+      "JWT",
+      "PM2",
+      "AWS EC2",
+      "Zustand",
+      "Tailwind CSS",
+    ],
+    features: [
+      "Autenticación robusta con rotación de Refresh Tokens en cookies HttpOnly.",
+      "Paginación por cursor para scroll infinito eficiente.",
+      "Manejo avanzado de caché en Apollo Client para optimizar el ancho de banda.",
+      "Notificaciones en tiempo real mediante WebSockets (GraphQL Subscriptions).",
+      "Despliegue gestionado con PM2 en instancia EC2 de AWS.",
+    ],
+    links: {
+      frontend: "https://github.com/EmmanuelGutierrez/social-app",
+      backend: "https://github.com/EmmanuelGutierrez/social-api",
+    },
+  },
+  {
+    title: "Mi portfolio",
+    slug: "portfolio-astro-v4",
+    description:
+      "Plataforma de marca personal diseñada para maximizar las Core Web Vitals y la experiencia de usuario. Construida sobre la arquitectura de 'Islas' de Astro para reducir el JavaScript al mínimo, hidratando solo componentes interactivos específicos (como el selector de temas). Implementa transiciones de vista nativas para una navegación fluida tipo SPA sin sacrificar el SEO.",
+    technologies: [
+      "Astro 5.0",
+      "React (Islands)",
+      "Tailwind CSS v4",
+      "TypeScript",
+      "View Transitions API",
+      "CSS Variables",
+    ],
+    features: [
+      "Sistema de Tema Oscuro/Claro persistente sin parpadeos (FOUC prevention).",
+      "Navegación fluida entre páginas mediante View Transitions API.",
+      "Componentes de UI reutilizables y accesibles (Cards, Modals, Buttons).",
+      "Internacionalización (i18n) nativa mediante estrategia de enrutamiento.",
+      "Puntuación perfecta (100/100) en métricas de Google Lighthouse (Performance, Accessibility, SEO).",
+    ],
+    links: {
+      frontend: "https://github.com/EmmanuelGutierrez/portfolio",
+      deploy: "/",
+    },
+  },
+];
+---
+
+<div>
+  <SectionTitle title="Proyectos" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {
+      proyects.map((proyect) => (
+        <ProyectCard
+          slug={proyect.slug}
+          title={proyect.title}
+          description={proyect.description}
+          technologies={proyect.technologies}
+          features={proyect.features}
+          status={proyect.status}
+          links={proyect.links}
+        />
+      ))
+    }
+  </div>
+</div>

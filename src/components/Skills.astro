@@ -1,0 +1,65 @@
+---
+import Card from "./common/Card.astro";
+import SectionTitle from "./common/SectionTitle.astro";
+
+const skills = [
+  {
+    area: "Backend",
+    skills: [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "TypeORM",
+      "Mongoose",
+      "Socket.IO",
+      "Python",
+      "Flask",
+      "FastAPI",
+    ],
+  },
+  {
+    area: "Frontend",
+    skills: [
+      "React.js",
+      "Next.js",
+      "Astro",
+      "TailwindCss",
+      "Material UI",
+      "Zustand",
+      "Redux",
+      "React Native",
+    ],
+  },
+  {
+    area: "Databases",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Mongoose", "SQL Server"],
+  },
+  { area: "Testing", skills: ["Jest", "Mocha", "Chai"] },
+  { area: "Tools", skills: ["Git", "GraphQL", "Scrum", "Passport", "JWT"] },
+];
+---
+
+<div>
+  <div class="mb-10">
+    <SectionTitle title="Habilidades" />
+
+    <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          skills.map((skill) => (
+            <Card>
+              <h3 class=" font-bold text-neon-blue">{skill.area}</h3>
+              <ul>
+                {skill.skills.map((s) => (
+                  <li>
+                    <span class="text-text-main text-xs font-light">{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

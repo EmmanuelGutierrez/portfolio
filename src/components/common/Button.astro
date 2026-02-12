@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "../../utils/cn";
+
+interface Props extends HTMLAttributes<"button"> {}
+
+const { class: className, ...props } = Astro.props;
+const baseClasses = cn(
+  "rounded-md transform transition bg-neon-blue hover:bg-neon-blue/75 px-5 py-2.5 flex items-center gap-2 text-sm font-medium text-white shadow-sm",
+  className,
+);
+---
+
+<button class={baseClasses} {...props}>
+  <slot />
+</button>

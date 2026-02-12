@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<"div"> {}
+const { class: className = "",...props } = Astro.props;
+---
+
+<div
+  class={`block rounded-2xl transition-all duration-300
+bg-bg-card border border-border-subtle p-4 shadow-sm sm:p-6 ${className}`}
+{...props}>
+  <slot />
+</div>
+

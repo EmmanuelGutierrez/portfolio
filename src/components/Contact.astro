@@ -1,0 +1,46 @@
+---
+import Card from "./common/Card.astro";
+import SectionTitle from "./common/SectionTitle.astro";
+import Mortarboard from "../assets/svg/mortarboard.svg";
+import Email from "../assets/svg/email.svg";
+import LinkedIn from "../assets/svg/linkedin.svg";
+import GitHub from "../assets/svg/github.svg";
+
+const contact = [
+  {
+    title: "emma.g2705@gmail.com",
+    value: "mailto:emma.g2705@gmail.com",
+    icon: Email,
+  },
+  {
+    title: "linkedin.com/in/emmanuel-gutierrez27",
+    value: "https://linkedin.com/in/emmanuel-gutierrez27",
+    icon: LinkedIn,
+  },
+  {
+    title: "github.com/EmmanuelGutierrez",
+    value: "https://github.com/EmmanuelGutierrez",
+    icon: GitHub,
+  },
+];
+---
+
+<div>
+  <SectionTitle title="Contacto" />
+  <Card>
+    <div class="flex flex-col gap-6">
+      {
+        contact.map((item) => (
+          <a href={item.value} class="flex items-center gap-2">
+            <div class="bg-neon-blue/20 p-3 rounded-full">
+              <item.icon class="text-neon-blue w-5 h-5" />
+            </div>
+            <p class="text-sm text-text-muted hover:text-neon-blue transition-colors">
+              {item.title}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </Card>
+</div>

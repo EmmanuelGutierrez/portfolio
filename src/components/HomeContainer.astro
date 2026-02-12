@@ -1,0 +1,21 @@
+---
+import Contact from "./Contact.astro";
+import Education from "./Education.astro";
+import Experience from "./Experience.astro";
+import Proyects from "./Proyects.astro";
+import Skills from "./Skills.astro";
+---
+
+<div
+  class="grid grid-cols-1 md:grid-cols-3 px-5 md:px-10 lg:px-30 gap-16 py-20"
+>
+  <div class="col-span-2 flex flex-col gap-10">
+    <Experience />
+    <Proyects/>
+  </div>
+  <div class="col-span-1 flex flex-col gap-10">
+    <Skills />
+    <Education />
+    <Contact />
+  </div>
+</div>

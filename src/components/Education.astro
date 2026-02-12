@@ -1,0 +1,52 @@
+---
+import Card from "./common/Card.astro";
+import SectionTitle from "./common/SectionTitle.astro";
+import Mortarboard from "../assets/svg/mortarboard.svg";
+
+const education = {
+  "UTF-FRC": [
+    {
+      title: "Tecnicatura Universitaria en Programación",
+      dates: ["Mar 2020", "Nov 2022"],
+      location: "Córdoba, Córdoba, Argentina",
+    },
+    {
+      title: "Ingeniería en Sistemas de Información",
+      dates: ["Mar 2014", "Nov 2019"],
+      location: "Córdoba, Córdoba, Argentina",
+    },
+  ],
+};
+---
+
+<div>
+  <SectionTitle title="Educación" />
+  <Card>
+    <div class="flex gap-6">
+      <div>
+        <div class="bg-neon-blue/20 p-2 rounded-full">
+          <Mortarboard class="text-neon-blue w-10 h-10" />
+        </div>
+      </div>
+      <div class="flex flex-col">
+        {
+          Object.entries(education).map(([key, value]) => (
+            <div>
+              <h3 class="text-2xl font-bold text-pure-white">{key}</h3>
+              {value.map((item, index) => (
+                <div>
+                  <h4 class="text-lg font-bold text-neon-blue">{item.title}</h4>
+                  <p class="text-sm text-text-muted">{item.location}</p>
+                  <p class="text-sm text-text-muted">{item.dates.join(" - ")}</p>
+                  {index !== value.length - 1 && (
+                    <div class="h-px w-full bg-neon-blue/20 my-4" />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Card>
+</div>

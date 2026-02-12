@@ -1,0 +1,46 @@
+---
+import Card from "./common/Card.astro";
+import Building from "../assets/svg/building.svg";
+interface Props {
+  title: string;
+  company: string;
+  dates: string[];
+  achievement: string[];
+}
+const { achievement, company, dates, title } = Astro.props;
+---
+
+<Card class="flex-1 min-w-0">
+  <div class="sm:flex sm:justify-between sm:gap-4 lg:gap-6 text-text-muted w-full">
+    <div class="mt-4 sm:mt-0 w-full">
+      <div class="flex items-center justify-between gap-2">
+        <h3 class="text-2xl font-bold text-pretty text-text-main">
+          {title}
+        </h3>
+        <span
+          class="font-bold inline-flex items-center justify-center rounded-full
+          bg-neon-blue/20 px-2.5 py-1 text-neon-blue
+          text-xs"
+        >
+          {dates[0]} - {dates[1]}
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <Building class="text-neon-blue w-5 h-5" />
+        <h4 class="mt-1 text-lg font-bold text-neon-blue">{company}</h4>
+      </div>
+
+      <ul class="mt-4 text-sm text-pretty list-none space-y-2">
+        {
+          achievement.map((achieve) => (
+            <li class="relative pl-4">
+              <span class="absolute left-0 text-neon-blue font-bold">»</span>
+              {achieve}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Card>

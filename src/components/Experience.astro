@@ -1,0 +1,67 @@
+---
+import SectionTitle from "./common/SectionTitle.astro";
+import ExperienceCard from "./ExperienceCard.astro";
+const experience = [
+  {
+    title: "Desarrollador Fullstack",
+    company: "Tesma",
+    dates: ["Nov 2024", "Abr 2025"],
+    achievement: [
+      "Desarrollo de aplicaciones fullstack escalables usando React.js, Node.js, Express.js y PostgreSQL.",
+      "Creación y mantenimiento de APIs, optimización de queries y mejora del rendimiento.",
+      "Uso de Material UI para diseño de interfaces.",
+    ],
+  },
+  {
+    title: "Desarrollador Backendk",
+    company: "Sanstag SAS",
+    dates: ["Ene 2023", "Jul 2024"],
+    achievement: [
+      "Desarrollo de servicios backend con NestJS y TypeORM.",
+      "Integración con MercadoPago para procesamiento de pagos.",
+      "Implementación de autenticación/autorización con Passport & JWT.",
+      "Desarrollo de servicios de notificación por correo electrónico.",
+    ],
+  },
+  {
+    title: "Desarrollador Frontend",
+    company: "Acarga",
+    dates: ["May 2022", "Nov 2022"],
+    achievement: [
+      "Renovación de sitios web utilizando React.js y Node.js.",
+      "Diseño de interfaces interactivas y responsivas.",
+      "Uso de Material UI y Redux Toolkit para componentes y manejo de estados.",
+    ],
+  },
+  {
+    title: "Desarrollador Fullstack",
+    company: "Freelance",
+    dates: ["Mar 2022", "Jun 2022"],
+    achievement: [
+      "Desarrollo paneles de control para sistemas de gestión de bots utilizandoReact.js y Node.js.",
+    ],
+  },
+];
+---
+
+<div class="container mx-auto">
+  <SectionTitle title="Experiencia" />
+  <ol
+    class="relative space-y-8 before:absolute before:ml-1 before:mt-1 before:h-full before:w-0.5 before:rounded-full before:bg-electric-blue"
+  >
+    {
+      experience.map((exp) => (
+        <li class="relative -ms-1.5 flex items-start gap-4 w-full">
+          <span class="size-5 shrink-0 rounded-full bg-electric-blue mt-1" />
+
+          <ExperienceCard
+            title={exp.title}
+            company={exp.company}
+            dates={exp.dates}
+            achievement={exp.achievement}
+          />
+        </li>
+      ))
+    }
+  </ol>
+</div>

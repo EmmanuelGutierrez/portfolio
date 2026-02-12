@@ -1,0 +1,208 @@
+---
+import Card from "./common/Card.astro";
+
+interface Props {
+  slug: string; // Un ID único (ej: 'proyecto-1')
+  title: string;
+  description: string;
+  image?: string; // Opcional si tienes imagen
+  technologies: string[];
+  features: string[];
+  status?: string;
+  links?:{
+    backend?:string;
+    frontend?:string;
+    deploy?:string;
+  }
+}
+
+const { slug, title, description, technologies, features, image, status, links } =
+  Astro.props;
+const modalId = `modal-${slug}`;
+console.log("links", links);
+---
+
+<Card
+  class="group relative transition-all hover:shadow-lg hover:border-brand cursor-pointer"
+  data-open-modal={modalId}
+>
+  <div class="flex flex-col gap-4">
+    <h3
+      class="text-xl font-bold text-text-main group-hover:text-brand transition-colors"
+    >
+      {title}
+    </h3>
+    <h4 class="text-sm font-semibold text-text-main mb-2">{status}</h4>
+    <p class="text-sm text-text-muted line-clamp-3">
+      {description}
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {
+        technologies.map((tag) => (
+          <span class="rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-medium text-brand">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+
+    <button
+      class="mt-2 text-sm font-semibold text-brand underline decoration-transparent transition-all group-hover:decoration-brand"
+    >
+      Leer más &rarr;
+    </button>
+  </div>
+</Card>
+
+<div
+  id={modalId}
+  class="fixed inset-0 z-50 grid place-content-center bg-black/60 backdrop-blur-sm p-4 opacity-0 pointer-events-none transition-all duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <Card
+    class="relative w-full max-w-lg p-6 shadow-2xl transition-all transform"
+    data-modal-content
+  >
+    <div class="flex items-start justify-between mb-4">
+      <h2 class="text-2xl font-bold text-text-main">{title}</h2>
+      <h4 class="text-sm font-semibold text-text-main mb-2">{status}</h4>
+      <button
+        type="button"
+        class="rounded-full p-2 text-text-muted hover:bg-border-subtle hover:text-text-main transition-colors"
+        data-close-modal
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mt-2 space-y-4">
+      {
+        image && (
+          <img
+            src={image}
+            alt={title}
+            class="w-full h-48 object-cover rounded-lg"
+          />
+        )
+      }
+
+      <p class="text-text-muted leading-relaxed">
+        {description}
+      </p>
+
+      <div class="mt-4 pt-4 border-t border-border-subtle">
+        <h4 class="text-sm font-semibold text-text-main mb-2">Tecnologías:</h4>
+        <div class="flex flex-wrap gap-2">
+          {
+            technologies.map((tag) => (
+              <span class="rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-medium text-brand">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-text-main mb-2">Links:</h4>
+        {links && Object.entries(links).map(([key, value]) => (
+          <a
+            href={value}
+            class="rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-medium text-brand"
+          >
+            {key}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <footer class="mt-8 flex justify-end gap-3">
+      <button
+        type="button"
+        class="rounded-lg px-4 py-2 text-sm font-medium text-text-muted hover:bg-border-subtle transition-colors"
+        data-close-modal
+      >
+        Cerrar
+      </button>
+    </footer>
+  </Card>
+</div>
+
+<script>
+  // Ejecutamos la lógica cuando el DOM está listo
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll("[data-open-modal]");
+
+    cards.forEach((card) => {
+      const modalId = card.getAttribute("data-open-modal");
+      const modal = document.getElementById(modalId!);
+      if (!modal) return;
+
+      const closeButtons = modal.querySelectorAll("[data-close-modal]");
+      const modalContent = modal.querySelector("[data-modal-content]");
+
+      // Función para abrir
+      const openModal = () => {
+        modal.classList.remove("opacity-0", "pointer-events-none", "scale-100");
+        modal.classList.add("opacity-100", "pointer-events-auto", "scale-100");
+        modal.setAttribute("aria-hidden", "false");
+        // Bloquear scroll del body
+        document.body.style.overflow = "hidden";
+      };
+
+      // Función para cerrar
+      const closeModal = () => {
+        modal.classList.add("opacity-0", "pointer-events-none", "scale-100");
+        modal.classList.remove(
+          "opacity-100",
+          "pointer-events-auto",
+          "scale-100",
+        );
+        modal.setAttribute("aria-hidden", "true");
+        // Reactivar scroll del body
+        document.body.style.overflow = "";
+      };
+
+      // Event Listeners
+      card.addEventListener("click", (e) => {
+        // Evitamos que se abra si hacemos clic en un enlace dentro de la card
+        if ((e.target as HTMLElement).tagName === "A") return;
+        openModal();
+      });
+
+      closeButtons.forEach((btn) =>
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation(); // Evitar burbujeo
+          closeModal();
+        }),
+      );
+
+      // Cerrar al hacer clic fuera del contenido (en el fondo oscuro)
+      modal.addEventListener("click", (e) => {
+        if (modalContent && !modalContent.contains(e.target as Node)) {
+          closeModal();
+        }
+      });
+
+      // Cerrar con tecla ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("opacity-0")) {
+          closeModal();
+        }
+      });
+    });
+  });
+</script>
